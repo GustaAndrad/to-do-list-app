@@ -1,1 +1,27 @@
-<h1>{{mensagem}}</h1>
+  <nav class="navbar navbar-dark bg-dark">
+    <div>
+      <a class="navbar-brand" href="#">My To do List</a>
+    </div>
+  </nav>
+
+  <div class="card text-center">
+    <div class="card-header">
+      Organize seu dia de hoje
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Adicione sua tarefa de hoje a baixo.</h5>
+      <p class="card-text"></p>
+      <form [formGroup]="form" (ngSubmit) = "submit()">
+        <div class = "row">
+          <div class="col-md-6">
+            <input class="form-control" type="text" formControlName="description" placeholder="Digite sua tarefa aqui" aria-label="default input example">
+          </div>
+          <div class = "col-md-2">
+            <button type="submit" class="btn btn-primary">Adicionar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="card-footer text-muted">
+    </div>
+  </div>

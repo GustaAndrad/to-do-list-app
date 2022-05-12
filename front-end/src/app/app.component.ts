@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  mensagem : string = "hello world"
+  
+  form: FormGroup = new FormGroup({
+    description : new FormControl('')
+  })
+
+  submit(){
+    console.log(this.form.value)
+  }
 }
