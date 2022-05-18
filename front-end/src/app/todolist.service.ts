@@ -21,4 +21,9 @@ export class TodolistService {
   listar() : Observable<Todolist[]>{
     return this.http.get<Todolist[]>(this.apiURL);
   }
+
+  deletar(id: number) : Observable<void>{
+    const url = `${this.apiURL}/${id}`
+    return this.http.delete<void>(url)
+  }
 }
