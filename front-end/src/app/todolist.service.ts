@@ -17,4 +17,8 @@ export class TodolistService {
   salvar(todolist : Todolist) : Observable<Todolist>{
     return this.http.post<Todolist>(this.apiURL, todolist)
   }
+
+  listar() : Observable<Todolist[]>{
+    return this.http.get<Todolist[]>(this.apiURL);
+  }
 }

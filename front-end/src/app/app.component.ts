@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms'
 import { Todolist } from './todolist';
 import { TodolistService } from './todolist.service'
@@ -8,8 +8,9 @@ import { TodolistService } from './todolist.service'
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   
+  todolists : Todolist[] = []
   form: FormGroup = new FormGroup({
     description : new FormControl('')
   })
@@ -18,11 +19,16 @@ export class AppComponent {
     private service : TodolistService
     ){}
   
+  ngOnInit(){
+    this.service.listar().subscribe(todoList => this.todolists = todoList)
+  }
 
   submit(){
-    console.log(this.form.value)
     const todolist: Todolist = {...this.form.value}
     this.service.salvar(todolist)
-    .subscribe( savedTodolist => console.log(savedTodolist ))
+    .subscribe( savedTodolist => {
+      this.todolists.push(savedTodolist)
+      this.form.reset()
+    })
   }
 }
