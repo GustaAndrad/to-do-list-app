@@ -1,5 +1,7 @@
 package com.GustaAndrad.toDoListApp.rest;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -27,10 +29,14 @@ public class ToDoListController {
 		return repository.save(todolist);
 	}
 	
+	@GetMapping
+	public List<Todolist>getAll(){
+		return repository.findAll();
+	}
+	
 	@GetMapping("{id}")
 	public Todolist getById(@PathVariable Long id) {
 		return repository.findById(id)
 				.orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
-		
 	}
 }
