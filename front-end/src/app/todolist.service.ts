@@ -26,4 +26,9 @@ export class TodolistService {
     const url = `${this.apiURL}/${id}`
     return this.http.delete<void>(url)
   }
+
+  marcarConcluido(id : number) : Observable<Todolist>{
+    const url = `${this.apiURL}/${id}/done`
+    return this.http.patch<Todolist>(url, {})
+  }
 }

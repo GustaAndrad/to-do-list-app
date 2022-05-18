@@ -28,7 +28,7 @@
             <li *ngFor="let todolist of todolists" class="list-group-item d-flex justify-content-between align-items-center">
                 {{todolist.description}}
                 <div class="btn-group" role="group" aria-label="Basic example">
-                  <button type="button" class="btn btn-secondary btn-success">Feito</button>
+                  <button type="button" class="btn btn-secondary btn-success" [disabled]="todolist.done" (click)="done(todolist)">Feito</button>
                   <button type="button" class="btn btn-secondary btn-danger"(click)="delete(todolist)">Remover</button>
                 </div>
             </li>

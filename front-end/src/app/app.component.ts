@@ -43,4 +43,13 @@ export class AppComponent implements OnInit {
       next: (response) => this.listarTodos()
     })
   }
+
+  done(todoList: Todolist){
+    this.service.marcarConcluido(todoList.id).subscribe({
+      next: (savedTodolist) =>{
+        todoList.done = savedTodolist.done
+        todoList.doneDate = savedTodolist.doneDate
+      }
+    })
+  }
 }
